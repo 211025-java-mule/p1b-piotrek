@@ -1,6 +1,7 @@
 package com.revature.p1bpiotrek.util;
 
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,12 +13,19 @@ import java.net.URL;
 @RestController
 public class ItemController {
 
-    @SneakyThrows
+    @Autowired
+    ItemService itemService;
+
+
     @GetMapping("/hello")
-    public String getHello() throws IOException {
-        URL url = new URL("http://localhost:8081/hello");
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        InputStream response = connection.getInputStream();
-        return new String(response.readAllBytes());
+    public String getHello() {
+        return itemService.getBodyFromExternalEndpoint("hello");
     }
+
+    @GetMapping("/items")
+    public String getItems() {
+        return itemService.getBodyFromExternalEndpoint("persons");
+    }
+
+
 }
