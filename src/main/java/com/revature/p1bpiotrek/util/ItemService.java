@@ -128,5 +128,16 @@ public class ItemService {
         }
         return itemList;
     }
+    public Item getMatchingItem(String name){
+        List<Item> items = getItems();
+        Item item = new Item();
+
+        for(Item item1 : items){
+            if (item1.getName().equals(name)){
+                item = item1;
+            }
+        }
+        return item;
+    }
 }
 
