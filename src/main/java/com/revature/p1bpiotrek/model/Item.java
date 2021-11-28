@@ -12,7 +12,6 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 public class Item {
-    private int id;
     private String name;
-    private List<Country> countries;
+    private List<Piece> countries;
 }

@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Country {
+public class Piece {
     private String country_id;
     private String probability;
 }
