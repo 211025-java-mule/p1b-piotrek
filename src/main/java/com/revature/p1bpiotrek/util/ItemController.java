@@ -29,7 +29,7 @@ public class ItemController {
     @GetMapping("/items/name/one/{name}")
     public Piece getMostProbablyCountry(@PathVariable("name") String name) {
 
-        Item matchingItem = itemService.getMatchingItem(name);
+        Item matchingItem = itemService.getMatchingItemByName(name);
         if (matchingItem.getName() == null) {
             System.err.println("Before checking please add this name: " + name + " to DB");
             return null;
@@ -39,4 +39,13 @@ public class ItemController {
             return countries.get(0);
         }
     }
-}
+    @GetMapping("/items/save")
+        public String writeAllItemsToOutputFile(){
+        String body = itemService.getBodyFromExternalEndpoint("persons");
+        itemService.writeItemToFile(body);
+
+        return "File saved to : \"C:\\Users\\Piortek\\IdeaProjects\\p1b-piotrek\\out\\output.txt\"";
+
+        }
+    }
+

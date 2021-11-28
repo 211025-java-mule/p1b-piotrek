@@ -128,7 +128,7 @@ public class ItemService {
         }
         return itemList;
     }
-    public Item getMatchingItem(String name){
+    public Item getMatchingItemByName(String name){
         List<Item> items = getItems();
         Item item = new Item();
 
