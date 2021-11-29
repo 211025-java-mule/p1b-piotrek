@@ -23,6 +23,9 @@ public class ItemService {
     @Autowired
     ObjectMapper objectMapper;
 
+    /**
+     * @param body Method consumes String then writes it to the file with given path
+     */
     public void writeItemToFile(String body) {
 
         String path = "C:\\Users\\Piortek\\IdeaProjects\\p1b-piotrek\\out\\output.txt";
@@ -34,6 +37,10 @@ public class ItemService {
         }
     }
 
+    /**
+     * @param endpointName Method accepts String endpoint and performs GET method to localhost:8081
+     * @return Then response of this method is returned as a String object
+     */
     public String getBodyFromExternalEndpoint(String endpointName) {
         URL url = null;
         try {
@@ -63,6 +70,12 @@ public class ItemService {
         return body;
     }
 
+    /**
+     * Method performs GET method on localhost:8081/persons/, so it takes all Person object from this endpoint
+     * Parsing and creating Item object is also added here, method is using Jackson
+     *
+     * @return List of Item object is returned
+     */
     public List<Item> getItems() {
         URL url = null;
         try {
@@ -128,12 +141,19 @@ public class ItemService {
         }
         return itemList;
     }
-    public Item getMatchingItemByName(String name){
+
+    /**
+     * Method first does getItems(), then checks if input name is present in received List
+     *
+     * @param name Method consumes String name as a parameter, then uses it to check if there is Item with that name in the List
+     * @return Item with input name is returned if there is a match, if not Item object with fields set tu null is returned
+     */
+    public Item getMatchingItemByName(String name) {
         List<Item> items = getItems();
         Item item = new Item();
 
-        for(Item item1 : items){
-            if (item1.getName().equals(name)){
+        for (Item item1 : items) {
+            if (item1.getName().equals(name)) {
                 item = item1;
             }
         }
