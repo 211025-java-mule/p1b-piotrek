@@ -22,7 +22,10 @@ public class ItemController {
     public String getItems() {
         return itemService.getBodyFromExternalEndpoint("persons");
     }
-    /** Method adds Item object with given name to external repository. Repository does not accept duplicates
+
+    /**
+     * Method adds Item object with given name to external repository. Repository does not accept duplicates
+     *
      * @return Information about completing this task is returned
      */
     @GetMapping("/items/name/{name}")
@@ -33,6 +36,7 @@ public class ItemController {
 
     /**
      * Method performs GET method on external endpoint with given name. If name is not yet in DB information about this will be returned
+     *
      * @param name Method consumes String name as a parameter to search in external DB for it
      * @return Method returns Piece object, that contains the biggest probability of name nationality
      */
@@ -52,6 +56,7 @@ public class ItemController {
 
     /**
      * Method consumes String then writes it to the file with given path
+     *
      * @return Method returns String with information about path that file has been saved
      */
     @GetMapping("/items/save")
